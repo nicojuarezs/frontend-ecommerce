@@ -1,0 +1,5 @@
+footer {
+    color: var(--primary-color);
+    background-color: var(--terciary-color);
+    padding: 2rem;
+}
