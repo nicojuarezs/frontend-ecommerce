@@ -1,0 +1,121 @@
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: royalblue;
+  --terciary-color: #242424;
+  --button-success: #008000;
+  --button-danger: #FF0000;
+  
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  background-color: var(--primary-color);
+  color: var(--terciary-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin-user-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+}
+
+.user-form {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.user-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.user-form input[type="text"],
+.user-form input[type="email"],
+.user-form input[type="tel"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid var(--terciary-color);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn-submit {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+  border: 1px solid var(--secondary-color);
+  padding: 12px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+/* Estilos para los botones de acción en la tabla */
+.action-btn {
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-edit {
+  background-color: var(--button-success);
+  color: white;
+}
+
+.btn-danger {
+  background-color: var(--button-danger);
+  color: white;
+}
+

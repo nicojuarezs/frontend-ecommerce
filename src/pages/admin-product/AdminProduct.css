@@ -1,0 +1,116 @@
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: royalblue;
+  --terciary-color: #242424;
+  --button-success: green;
+  --button-danger: red;
+
+.admin-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.admin-form-container {
+  margin-bottom: 20px;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  background-color: var(--primary-color);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  color: var(--secondary-color);
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid var(--terciary-color);
+  border-radius: 4px;
+}
+
+.input-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.admin-table-container {
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    border: 1px solid var(--secondary-color);
+    padding: 10px;
+    text-align: center;
+  }
+
+  thead tr {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+
+  tbody {
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  }
+
+  .image img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .action {
+    .action-btn {
+      background-color: var(--button-success);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+
+      &.btn-danger {
+        background-color: var(--button-danger);
+      }
+
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.btn-success {
+  background-color: var(--button-success);
+}
+
+/* Estilos para los títulos de la tabla */
+.admin-table th {
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+}

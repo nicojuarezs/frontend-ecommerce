@@ -1,39 +1,34 @@
-import { useState, useEffect } from "react";
-import ProductCard from "../product-card/ProductCard";
-import axios from "axios";
-import "./ProductList.css"
+import { useEffect, useState } from 'react';
+import { useOrder } from '../../context/OrderContext';
 
-const URL = "https://663ebeffe3a7c3218a4b47e7.mockapi.io/";
+const ProductList = () => {
+  const { order, addOrderItem } = useOrder();
+  const [products, setProducts] = useState([]);
 
-export default function ProductList() {
-    const [products, setProducts] = useState([]); // Inicializar como un array vacío
-
-    useEffect(() => {
-        getProducts();
-    }, []);
-
-    async function getProducts() {
-        try {
-            const response = await axios.get(`${URL}/products`);
-            const productsAPI = response.data;
-            console.log(productsAPI);
-            setProducts(productsAPI);
-        } catch (error) {
-            console.log(error);
-        }
+  useEffect(() => {
+    
+    if (Array.isArray(order.products)) {
+      setProducts(order.products);
     }
+  }, [order]);
 
-    return (
-        <div>
-            <h2>LISTA DE PRODUCTOS</h2>
-            
-            <div className="card-container">
-                {products.map((prod) => (
-                <ProductCard key={prod.id} product={prod} />    
-                )
-            )}
+  if (!Array.isArray(products)) {
+    return <div>Error: No se pudieron cargar los productos.</div>;
+  }
 
-            </div>
-            </div>
-    );
-}
+  return (
+    <div>
+      <h1>Lista de Productos</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product.product}>
+            {product.name} - {product.quantity} - ${product.price}
+            <button onClick={() => addOrderItem(product)}>Agregar</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ProductList;

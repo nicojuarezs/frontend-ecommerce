@@ -1,5 +1,96 @@
-footer {
-    color: var(--primary-color);
-    background-color: var(--terciary-color);
-    padding: 2rem;
+/* Footer.css */
+
+.footer {
+    background-color: #2f2f2f;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-left: -250px;
+}
+
+.footer-links {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px 0;
+    text-align: center; /* Añadido para centrar el contenido */
+}
+
+.footer-logo {
+    max-width: 100px;
+    margin-left: 115px; /* Centrar el logo horizontalmente */
+    display: block; /* Asegura que el logo no afecte el flujo de los elementos en línea */
+}
+
+.footer-links h4 {
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #ffd700;
+}
+
+.li-atencion {
+    font-size: 14px;
+    margin-left: 135px;
+}
+
+.li-atencion2 {
+    font-size: 14px;
+}
+
+.social-link {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link a {
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-link a:hover {
+    transform: scale(1.1);
+    color: #ffd700;
 }

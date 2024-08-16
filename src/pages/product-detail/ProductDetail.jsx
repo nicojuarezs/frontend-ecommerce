@@ -1,37 +1,79 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { formatPrice } from "../../services/utils/formatNumber";
+import { useOrder } from "../../context/OrderContext";
+import "./ProductDetail.css";
 
-const URL = `https://663ebeffe3a7c3218a4b47e7.mockapi.io`;
+const URL = `http://localhost:3000/api/products`;
 
 export default function ProductDetail() {
   const [product, setProduct] = useState(null);
   const { id } = useParams();
-  const [loading, setLoading] = useState(true); // Inicializa como true
+  const [loading, setLoading] = useState(true);
+  const { addOrderItem } = useOrder();
 
   async function getProductById(productId) {
     try {
-      const response = await axios.get(`${URL}/products/${productId}`);
-      console.log(response.data);
-      setProduct(response.data);
+      // Realiza la solicitud GET al backend
+      const response = await axios.get(`${URL}/${productId}`);
+      console.log('Datos del producto:', response.data);
+      setProduct(response.data.product);
     } catch (error) {
-      console.log(error);
+      console.error('Error al obtener el producto:', error);
     } finally {
-      setLoading(false); // Asegúrate de que se establezca en false al final
+      setLoading(false);
     }
   }
 
   useEffect(() => {
-    getProductById(id);
-  }, [id]); // Agrega id como dependencia
+    if (id) {
+      getProductById(id);
+    }
+  }, [id]);
 
   if (loading) {
     return <h4>Cargando....</h4>;
   }
 
   if (!product) {
-    return <h4>Producto no encontrado</h4>; // Maneja el caso cuando no se encuentra el producto
+    return <h4>Producto no encontrado</h4>;
   }
 
-  return <h1>{product.name}</h1>;
+  return (
+    <div className="product-detail-card">
+      <div className="product-detail-header">
+        <img
+          className="product-detail-img"
+          src={`http://localhost:3000/images/products/${product.image}`}
+          alt={product.name || 'Imagen no disponible'}
+        />
+      </div>
+      <div className="product-detail-body">
+        <h2 className="product-detail-title">{product.name || 'Nombre no disponible'}</h2>
+        <p className="product-detail-description">
+          <strong>Descripción:</strong> {product.description || 'Descripción no disponible'}
+        </p>
+        <p className="product-detail-price">
+          <strong>Precio:</strong> ${formatPrice(product.price) || 'Precio no disponible'}
+        </p>
+        <p className="product-detail-brand">
+          <strong>Marca:</strong> Nike
+        </p>
+        <p className="product-detail-info">
+          Nike es una marca líder en la industria del deporte y la moda. Con una rica historia de innovación y calidad, Nike ofrece productos que no solo destacan por su diseño, sino también por su rendimiento. Cada producto Nike está diseñado para satisfacer las necesidades de los atletas y entusiastas del deporte, combinando tecnología avanzada con estilo inigualable.
+        </p>
+      </div>
+      <div className="product-detail-footer">
+      <button 
+  onClick={() => addOrderItem(product)} 
+  className="add-to-cart-button"
+  style={{ marginTop: '20px' }}
+>
+  Comprar
+</button>
+
+      </div>
+    </div>
+  );
 }

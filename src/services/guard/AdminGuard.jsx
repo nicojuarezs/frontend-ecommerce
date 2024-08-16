@@ -1,7 +1,9 @@
 import { Navigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 
 export default function AdminGuard({ children }) {
-  const isAdmin = true;
 
-  return isAdmin ? children : <Navigate to="/" replace />;
+  const { user } = useUser()
+
+  return user?.role === "ADMIN_ROLE" ? children : <Navigate to="/" replace />;
 }
